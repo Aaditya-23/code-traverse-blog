@@ -17,16 +17,18 @@ export default async function PopularPosts() {
   const posts = await fetchPopularPosts()
 
   return (
-    <div className='ml-4 hidden flex-col gap-6 text-police-blue md:flex md:flex-[2] lg:flex-1'>
-      <div className='space-y-2'>
-        <p className='text-2xl font-semibold capitalize'>popular posts</p>
+    <div className='ml-4 hidden text-police-blue md:block md:flex-[2] lg:flex-1'>
+      <div className='sticky top-5 flex flex-col gap-6'>
+        <div className='space-y-2'>
+          <p className='text-2xl font-semibold capitalize'>popular posts</p>
 
-        <div className='h-px w-full bg-police-blue/30'></div>
+          <div className='h-px w-full bg-police-blue/30'></div>
+        </div>
+
+        {posts.map(({ slug }) => (
+          <Post key={slug} slug={slug} />
+        ))}
       </div>
-
-      {posts.map(({ slug }) => (
-        <Post key={slug} slug={slug} />
-      ))}
     </div>
   )
 }

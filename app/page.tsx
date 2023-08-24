@@ -1,5 +1,5 @@
 import { FeaturedPost, Search } from '@/components'
-import { Navbar } from '@/layouts'
+import { Footer, Navbar } from '@/layouts'
 import { AllPosts, PopularPosts } from './_components'
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
         <div className='flex flex-[3] flex-col gap-8'>
           <FeaturedPost />
 
-          <div className='self-center'>
+          <div>
             <Search />
           </div>
 
@@ -20,6 +20,8 @@ export default function Home() {
 
         <PopularPosts />
       </main>
+
+      <Footer />
     </>
   )
 }

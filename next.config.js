@@ -6,5 +6,4 @@ const nextConfig = {
   swcMinify: true,
 }
 
-const { withContentlayer } = require('next-contentlayer')
-module.exports = withContentlayer(nextConfig)
+module.exports = nextConfig

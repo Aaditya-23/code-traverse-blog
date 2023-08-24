@@ -8,7 +8,7 @@ pre > code {
 
 /** Inline code block styles */
 p code {
-  @apply rounded bg-gray-100 p-1 text-xs font-medium tracking-tight ring-1 ring-gray-200;
+  @apply rounded bg-gray-100 p-1 text-sm font-medium tracking-tight ring-1 ring-gray-200;
 }
 
 /** Code line number styles */
@@ -26,4 +26,10 @@ code[data-line-numbers-max-digits='2'] > [data-line] {
 
 code[data-line-numbers-max-digits='3'] > [data-line] {
   @apply w-12;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }

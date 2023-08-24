@@ -11,8 +11,8 @@ export default function StreamMetrics({ slug }: { slug: string }) {
 }
 
 async function Metrics({ slug }: { slug: string }) {
-  const [{ _count, publishedAt, updatedAt, views }, p] = await Promise.all([
-    prisma.post.findUniqueOrThrow({
+  const { _count, publishedAt, updatedAt, views } =
+    await prisma.post.findUniqueOrThrow({
       where: { slug },
       select: {
         _count: { select: { likes: true } },
@@ -20,9 +20,7 @@ async function Metrics({ slug }: { slug: string }) {
         publishedAt: true,
         updatedAt: true,
       },
-    }),
-    new Promise((resolve) => setTimeout(resolve, 5000)),
-  ])
+    })
 
   return (
     <div className='flex gap-1 text-sm font-medium'>
@@ -36,10 +34,5 @@ async function Metrics({ slug }: { slug: string }) {
 }
 
 function Loading() {
-  return (
-    <span className='relative flex h-3 w-3'>
-      <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75'></span>
-      <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500'></span>
-    </span>
-  )
+  return <div className='h-2 w-1/3 animate-pulse rounded bg-gray-200'></div>
 }

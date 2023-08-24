@@ -7,6 +7,12 @@ import { BsMoonStars, BsSun } from 'react-icons/bs'
 import Link from 'next/link'
 
 export default function Nav() {
+  function handleClick() {
+    const sub = document.querySelector<HTMLElement>('#subscribe')
+
+    if (sub) sub.focus()
+  }
+
   return (
     <nav className='mx-auto mt-3 flex w-full items-center justify-between p-2 sm:w-4/5'>
       <Link href='/'>
@@ -121,7 +127,10 @@ export default function Nav() {
       </Link>
 
       <div className='flex gap-3'>
-        <button className='text-sm capitalize text-gray-900 underline underline-offset-2'>
+        <button
+          onClick={handleClick}
+          className='text-sm font-medium capitalize text-police-blue underline underline-offset-2'
+        >
           subscribe
         </button>
         <ThemeMenu />

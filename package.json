@@ -9,6 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,mdx,css}\"",
     "studio": "npx prisma studio",
+    "contentlayer:dev": "npx contentlayer dev",
     "contentlayer:build": "npx contentlayer build",
     "db:push": "npx prisma db push",
     "db:generate": "npx prisma generate"
