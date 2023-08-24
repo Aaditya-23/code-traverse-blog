@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+pre > code {
+  @apply grid overflow-x-auto pb-3 pl-1 pr-3 pt-2;
+}
+
+/** Inline code block styles */
+p code {
+  @apply rounded bg-gray-100 p-1 text-xs font-medium tracking-tight ring-1 ring-gray-200;
+}
+
+/** Code line number styles */
+pre > code {
+  @apply [counter-reset:line];
+}
+
+code > [data-line] {
+  @apply before:mr-4 before:inline-block before:w-4 before:text-right before:text-xs before:content-[counter(line)] before:[counter-increment:line];
+}
+
+code[data-line-numbers-max-digits='2'] > [data-line] {
+  @apply before:w-8;
+}
+
+code[data-line-numbers-max-digits='3'] > [data-line] {
+  @apply w-12;
+}

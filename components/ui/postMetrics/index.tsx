@@ -5,48 +5,35 @@ type Props = {
   slug: string
 }
 
-async function createPost(slug: string) {
-  return await prisma.post.create({
-    data: {
-      slug,
-    },
-    select: {
-      likes: true,
-      views: true,
-      publishedAt: true,
-      updatedAt: true,
-    },
-  })
-}
-
 async function fetchPostMetrics(slug: string) {
   const metrics = await prisma.post.findFirst({
     where: {
       slug,
     },
     select: {
-      likes: true,
+      _count: {
+        select: { likes: true },
+      },
       views: true,
       publishedAt: true,
       updatedAt: true,
     },
   })
 
-  if (!metrics) return createPost(slug)
-
+  if (!metrics) throw Error('post not found in database')
   return metrics
 }
 
 export default async function Index(props: Props) {
   const { slug } = props
 
-  const { likes, views, publishedAt, updatedAt } = await fetchPostMetrics(slug)
+  const { _count, views, publishedAt, updatedAt } = await fetchPostMetrics(slug)
 
   return (
     <div className='flex flex-wrap justify-center gap-3 text-sm font-medium capitalize text-police-blue'>
-      <p>{formatPostMetric({ publishedAt, updatedAt: new Date() })}</p>
+      <p>{formatPostMetric({ publishedAt, updatedAt })}</p>
       <Separator />
-      <p>{formatPostMetric({ likes })}</p>
+      <p>{formatPostMetric({ likes: _count.likes })}</p>
       <Separator />
       <p>{formatPostMetric({ views })}</p>
     </div>

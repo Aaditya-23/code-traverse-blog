@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{js,ts,tsx,mdx}\"",
+    "format": "prettier --write \"**/*.{js,ts,tsx,mdx,css}\"",
     "studio": "npx prisma studio",
     "contentlayer:build": "npx contentlayer build",
     "db:push": "npx prisma db push",
@@ -16,12 +16,18 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@prisma/client": "^5.1.1",
+    "@upstash/redis": "^1.22.0",
     "contentlayer": "^0.3.4",
+    "framer-motion": "^10.16.1",
+    "github-slugger": "^2.0.0",
     "next": "13.4.19",
     "next-contentlayer": "^0.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
+    "rehype-pretty-code": "^0.10.0",
+    "rehype-slug": "^5.1.0",
+    "shiki": "^0.14.3",
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {

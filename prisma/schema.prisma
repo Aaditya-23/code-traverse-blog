@@ -11,8 +11,20 @@ datasource db {
 model Post {
   id          String   @id @default(uuid())
   slug        String   @unique @db.VarChar(200)
-  likes       Int      @default(0)
+  title       String   @db.VarChar(300)
+  likes       Likes[]
   views       Int      @default(0)
   publishedAt DateTime @default(now())
-  updatedAt   DateTime @updatedAt()
+  updatedAt   DateTime @updatedAt
+
+  @@index([slug])
+}
+
+model Likes {
+  id        String   @id
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([postId])
 }
