@@ -70,25 +70,13 @@ function formatPostViews(views: number) {
 }
 
 function formatPostDate(publishedAt: Date, updatedAt: Date) {
-  const [publishedDate, publishedMonth, publishedYear] = dateFormatter
-    .format(publishedAt)
-    .split('-')
+  const pub = dateFormatter.format(publishedAt).split('-')
 
-  const [updatedDate, updatedMonth, updatedYear] = dateFormatter
-    .format(updatedAt)
-    .split('-')
+  const up = dateFormatter.format(updatedAt).split('-')
 
-  const [_, __, currentYear] = dateFormatter.format(new Date()).split('-')
+  const curr = dateFormatter.format(new Date()).split('-')
 
-  if (publishedAt.valueOf() === updatedAt.valueOf()) {
-    if (publishedYear === currentYear)
-      return `${publishedDate}' ${publishedMonth}`
+  console.log(pub, up, curr)
 
-    return `${publishedMonth}' ${publishedYear}`
-  } else {
-    if (updatedYear === currentYear)
-      return `updated on ${updatedDate}' ${updatedMonth}`
-
-    return `updated on ${updatedMonth}' ${updatedYear}`
-  }
+  return 'dates'
 }
