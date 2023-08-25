@@ -2,12 +2,24 @@
 
 import { prisma } from '@/lib/prisma'
 import { redis } from '@/lib/redis'
-import { MatchedPosts } from '@/types'
+import { z } from 'zod'
+
+const schema = z
+  .object({
+    slug: z.string(),
+    title: z.string(),
+    _count: z.object({
+      likes: z.number(),
+    }),
+  })
+  .array()
 
 export async function fetchPosts(query: string) {
-  const cache = await redis.get<Array<MatchedPosts>>(query)
+  const cache = await redis.get(query)
 
-  if (cache) return cache
+  const parsedData = schema.safeParse(cache)
+
+  if (parsedData.success) return parsedData.data
 
   const posts = await prisma.post.findMany({
     where: {
