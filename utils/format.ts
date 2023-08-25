@@ -7,12 +7,12 @@ type DateMetric = {
   updatedAt: Date
 }
 
-const numberFormatter = new Intl.NumberFormat('en-US', {
+const numberFormatter = new Intl.NumberFormat('en-IN', {
   minimumFractionDigits: 0,
   maximumFractionDigits: 1,
 })
 
-const dateFormatter = new Intl.DateTimeFormat('en-US', {
+const dateFormatter = new Intl.DateTimeFormat('en-IN', {
   dateStyle: 'medium',
 })
 
@@ -20,6 +20,7 @@ export function formatThousand(number: number) {
   const result = number / 1000
   return numberFormatter.format(result)
 }
+
 export function formatMillion(number: number) {
   const result = number / MILLION
   return numberFormatter.format(result)
@@ -70,13 +71,25 @@ function formatPostViews(views: number) {
 }
 
 function formatPostDate(publishedAt: Date, updatedAt: Date) {
-  const pub = dateFormatter.format(publishedAt).split('-')
+  const [publishedDate, publishedMonth, publishedYear] = dateFormatter
+    .format(publishedAt)
+    .split('-')
 
-  const up = dateFormatter.format(updatedAt).split('-')
+  const [updatedDate, updatedMonth, updatedYear] = dateFormatter
+    .format(updatedAt)
+    .split('-')
 
-  const curr = dateFormatter.format(new Date()).split('-')
+  const [_, __, currentYear] = dateFormatter.format(new Date()).split('-')
 
-  console.log(pub, up, curr)
+  if (publishedAt.valueOf() === updatedAt.valueOf()) {
+    if (publishedYear === currentYear)
+      return `${publishedDate}' ${publishedMonth}`
 
-  return 'dates'
+    return `${publishedMonth}' ${publishedYear}`
+  } else {
+    if (updatedYear === currentYear)
+      return `updated on ${updatedDate}' ${updatedMonth}`
+
+    return `updated on ${updatedMonth}' ${updatedYear}`
+  }
 }
