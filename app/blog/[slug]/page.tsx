@@ -15,7 +15,7 @@ function getBlog(slug: string) {
   return blog
 }
 
-async function checkPostLike(slug: string, title: string) {
+async function checkPostLike(slug: string) {
   const sessionId = generateSessionId(slug)
   const like = await prisma.likes.findUnique({
     where: {
@@ -23,25 +23,17 @@ async function checkPostLike(slug: string, title: string) {
     },
   })
 
-  // if (!like)
-  //   await prisma.post.create({
-  //     data: {
-  //       slug,
-  //       title,
-  //     },
-  //   })
-
   return like ? true : false
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const blog = getBlog(params.slug)
-  const isPostLiked = await checkPostLike(params.slug, blog.title)
+  const isPostLiked = await checkPostLike(params.slug)
   const MDXContent = getMDXComponent(blog.body.code)
 
   return (
     <>
-      <h1 className='mx-auto w-11/12 text-center text-4xl font-extrabold text-police-blue sm:text-5xl md:w-3/4 '>
+      <h1 className='mx-auto w-11/12 text-center text-4xl font-extrabold text-police-blue dark:text-zinc-300 sm:text-5xl md:w-3/4'>
         {blog.title}
       </h1>
 
@@ -62,6 +54,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
           ))}
         </Sidebar>
       </div>
+      <div className='fixed left-1/2 top-1/2 -z-10 aspect-square h-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#f4a385] via-[#bf5187] to-[#9291bd] blur-3xl md:h-44 md:blur-[95px]' />
     </>
   )
 }
@@ -70,7 +63,7 @@ function NavLink({ heading }: { heading: any }) {
   return (
     <Link
       href={`#${heading.slug}`}
-      className='break-words text-xs font-medium text-slate-600 underline-offset-1 hover:underline'
+      className='break-words text-xs font-medium text-slate-600 underline-offset-1 hover:underline dark:text-zinc-300'
     >
       {heading.text}
     </Link>

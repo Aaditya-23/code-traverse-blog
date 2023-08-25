@@ -47,14 +47,14 @@ export default function Index() {
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           exit={{ opacity: 0 }}
-          className='relative rounded-xl text-police-blue shadow-elevation'
+          className='relative rounded-xl text-police-blue shadow-elevation dark:text-zinc-300 dark:shadow-darkElevation'
         >
           <div className='flex items-center gap-1 p-3'>
             <BiSearch size='1.2em' />
 
             <input
               type='text'
-              className='w-full pl-2 outline-none'
+              className='w-full bg-transparent pl-2 outline-none'
               placeholder='Search...'
               autoFocus
               onChange={handleQueryChange}
@@ -87,7 +87,7 @@ export default function Index() {
           initial={{ scaleY: 0, opacity: 0 }}
           animate={{ scaleY: 1, opacity: 1 }}
           exit={{ scale: 0, opacity: 0 }}
-          className='mx-auto block rounded-xl bg-[#2a4663] p-3 text-white'
+          className='mx-auto block rounded-xl bg-[#2a4663] p-3 text-white shadow-elevation dark:shadow-darkElevation'
           onClick={() => toggleSearchbar(true)}
         >
           <BiSearch size='1.3em' />

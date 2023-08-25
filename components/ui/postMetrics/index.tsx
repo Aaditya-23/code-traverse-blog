@@ -30,7 +30,7 @@ export default async function Index(props: Props) {
   const { _count, views, publishedAt, updatedAt } = await fetchPostMetrics(slug)
 
   return (
-    <div className='flex flex-wrap justify-center gap-3 text-sm font-medium capitalize text-police-blue'>
+    <div className='flex flex-wrap justify-center gap-3 text-sm font-medium capitalize text-police-blue dark:text-zinc-300'>
       <p>{formatPostMetric({ publishedAt, updatedAt })}</p>
       <Separator />
       <p>{formatPostMetric({ likes: _count.likes })}</p>
@@ -41,5 +41,7 @@ export default async function Index(props: Props) {
 }
 
 function Separator() {
-  return <div className='self-center rounded-full bg-gray-600 p-[2px]' />
+  return (
+    <div className='self-center rounded-full bg-gray-600 p-[2px] dark:bg-zinc-200' />
+  )
 }

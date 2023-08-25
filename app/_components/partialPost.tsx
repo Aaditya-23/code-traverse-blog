@@ -9,10 +9,12 @@ export default function PartialPost(props: Posts) {
     <Link
       href={`/blog/${slug}`}
       key={slug}
-      className='flex flex-col gap-4 rounded-xl px-2 py-3 text-police-blue transition-colors hover:bg-black/5'
+      className='group flex flex-col gap-4 rounded-xl px-2 py-3 text-police-blue dark:text-zinc-200 '
     >
       <div className='space-y-2'>
-        <p className='text-2xl font-bold'>{title}</p>
+        <p className='text-2xl font-bold underline-offset-2 group-hover:underline'>
+          {title}
+        </p>
 
         <StreamMetrics slug={slug} />
       </div>

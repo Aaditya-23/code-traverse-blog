@@ -6,9 +6,14 @@ pre > code {
   @apply grid overflow-x-auto pb-3 pl-1 pr-3 pt-2;
 }
 
-/** Inline code block styles */
+/** Inline code block styles with and without language*/
 p code {
-  @apply rounded bg-gray-100 p-1 text-sm font-medium tracking-tight ring-1 ring-gray-200;
+  @apply rounded bg-gray-100 p-1 text-sm font-semibold tracking-tight ring-1 ring-gray-200 dark:bg-white/10 dark:ring-gray-700;
+}
+
+/** Inline code block styles with language*/
+p code[data-language] {
+  @apply font-medium;
 }
 
 /** Code line number styles */

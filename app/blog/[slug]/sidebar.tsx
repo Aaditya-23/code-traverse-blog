@@ -9,13 +9,13 @@ export default function Sidebar({ isPostLiked, children }: SidebarProps) {
   return (
     <div className='hidden w-1/5 min-w-[20%] pr-1 md:block'>
       <aside className='sticky top-5 flex-col gap-4 md:flex'>
-        <p className='text-lg font-semibold  uppercase text-police-blue'>
+        <p className='text-lg font-semibold  uppercase text-police-blue dark:text-zinc-300'>
           On this page
         </p>
 
         <div className='flex flex-col gap-2'>{children}</div>
 
-        <div className='h-px w-full bg-police-blue/20' />
+        <div className='h-px w-full bg-police-blue/20 dark:bg-zinc-200/50' />
 
         <LikeButton isPostLiked={isPostLiked} />
       </aside>

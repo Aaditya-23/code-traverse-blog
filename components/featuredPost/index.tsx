@@ -15,7 +15,7 @@ export default async function Index() {
   return (
     <Link
       href={`/blog/${featuredPost.slug}`}
-      className='group mx-auto flex aspect-square w-full max-w-[400px] flex-col justify-between rounded-xl bg-gradient-to-t from-[#09203f] to-[#537895] p-3 text-white shadow-elevation sm:aspect-[3/2]'
+      className='group mx-auto flex aspect-square w-full max-w-[400px] flex-col justify-between rounded-xl bg-gradient-to-t from-[#09203f] to-[#537895] p-3 text-white shadow-elevation dark:shadow-darkElevation sm:aspect-[3/2]'
     >
       <p className='text-lg font-semibold capitalize'>featured post</p>
 

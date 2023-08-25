@@ -33,7 +33,6 @@ function Button({ isPostLiked }: Props) {
 
   const buttonVariants: Variants = {
     unliked: {
-      backgroundColor: '#FFFFFF',
       scale: [1, 0.85, 1],
     },
     liked: {
@@ -54,17 +53,17 @@ function Button({ isPostLiked }: Props) {
       animate={isPostLiked ? 'liked' : 'unliked'}
       type='submit'
       disabled={pending}
-      className={`flex w-max items-center gap-3 rounded-lg ${
+      className={`flex w-max items-center gap-3 rounded-lg border-violet-200 bg-white px-3 py-2 dark:border-indigo-700 dark:bg-transparent ${
         isPostLiked ? '' : 'border'
-      } border-violet-200 px-3 py-2`}
+      } `}
     >
       <motion.span variants={heartVariants} initial={false}>
         <FiHeart
           size='1.2em'
           className={`${
             isPostLiked
-              ? 'fill-white stroke-white'
-              : 'fill-violet-200 stroke-violet-200'
+              ? 'fill-white stroke-transparent'
+              : 'fill-violet-200 stroke-transparent dark:fill-indigo-600'
           }`}
         />
       </motion.span>
@@ -81,7 +80,7 @@ function Button({ isPostLiked }: Props) {
           {isPostLiked ? (
             <span className='text-white'>liked</span>
           ) : (
-            <span className='text-police-blue'>like</span>
+            <span className='text-police-blue dark:text-indigo-500'>like</span>
           )}
         </motion.span>
       </AnimatePresence>

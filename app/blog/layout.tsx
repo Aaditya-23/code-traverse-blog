@@ -1,4 +1,3 @@
-import { Subscribe } from '@/components/ui'
 import { Footer, Navbar } from '@/layouts'
 
 export default function Layout({ children }: { children: React.ReactNode }) {

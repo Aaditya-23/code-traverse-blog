@@ -9,28 +9,28 @@ export const mdxComponents: MDXComponents = {
 
   h2: (props) => (
     <h2
-      className='break-words text-3xl font-semibold text-police-blue sm:text-4xl'
+      className='break-words text-3xl font-semibold text-police-blue dark:text-zinc-300 sm:text-4xl'
       {...props}
     />
   ),
 
   h3: (props) => (
     <h3
-      className='break-words text-2xl font-semibold text-police-blue sm:text-3xl'
+      className='break-words text-2xl font-semibold text-police-blue dark:text-zinc-300 sm:text-3xl'
       {...props}
     />
   ),
 
   h4: (props) => (
     <h4
-      className='break-words text-xl font-semibold text-police-blue sm:text-2xl'
+      className='break-words text-xl font-semibold text-police-blue dark:text-zinc-300 sm:text-2xl'
       {...props}
     />
   ),
 
   h5: (props) => (
     <h5
-      className='break-words text-base font-semibold text-police-blue sm:text-xl'
+      className='break-words text-base font-semibold text-police-blue dark:text-zinc-300 sm:text-xl'
       {...props}
     />
   ),
@@ -45,7 +45,7 @@ export const mdxComponents: MDXComponents = {
 
   p: (props) => (
     <p
-      className='break-words text-justify text-sm tracking-wide text-police-blue sm:text-base'
+      className='break-words text-justify text-sm tracking-wide text-police-blue dark:text-zinc-300 sm:text-base'
       {...props}
     />
   ),

@@ -35,19 +35,19 @@ export default function CodeBlock({ title, children }: CodeBlockProps) {
   }, [])
 
   return (
-    <div className='max-w-full self-center rounded-md border text-sm text-gray-400'>
-      <div className='flex border-b p-2 text-xs font-medium '>
+    <div className='max-w-full self-center rounded-md border text-sm text-gray-400 dark:border-white/10'>
+      <div className='flex border-b p-2 text-xs font-medium dark:border-white/10 '>
         {title}
 
         <button
-          className='ml-auto'
+          className='ml-auto text-black dark:text-zinc-200'
           disabled={state === 'copied'}
           onClick={handleClick}
         >
           {state === 'copy' ? (
-            <LuCopy size='1.2em' className='text-black' />
+            <LuCopy size='1.2em' />
           ) : (
-            <FiCheck size='1.2em' className='text-black' />
+            <FiCheck size='1.2em' />
           )}
         </button>
       </div>

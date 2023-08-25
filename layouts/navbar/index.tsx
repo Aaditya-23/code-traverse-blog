@@ -129,7 +129,7 @@ export default function Nav() {
       <div className='flex gap-3'>
         <button
           onClick={handleClick}
-          className='text-sm font-medium capitalize text-police-blue underline underline-offset-2'
+          className='text-sm font-medium capitalize text-police-blue underline underline-offset-2 dark:text-zinc-200'
         >
           subscribe
         </button>
@@ -164,12 +164,14 @@ function ThemeMenu() {
         {getThemeIcon(theme)}
       </Listbox.Button>
 
-      <Listbox.Options className='absolute left-1/2 z-10 mt-2 flex -translate-x-1/2 flex-col overflow-hidden rounded-md bg-white text-sm font-bold shadow-lg ring-1 ring-black ring-opacity-5'>
+      <Listbox.Options className='absolute right-0 z-10 mt-2 flex flex-col overflow-hidden rounded-md bg-white text-sm font-bold shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-[#15181d] dark:ring-zinc-200 dark:ring-opacity-5 md:right-1/2 md:translate-x-1/2'>
         <Listbox.Option
           value='light'
           className={({ selected, active }) =>
-            `flex items-center gap-2 p-2 ${active && 'bg-slate-100'} ${
-              selected ? 'text-indigo-600' : 'text-gray-600'
+            `flex items-center gap-2 p-2 ${
+              active && 'bg-slate-100 dark:bg-white/5'
+            } ${
+              selected ? 'text-indigo-600 dark:text-sky-500' : 'text-gray-600'
             }`
           }
         >
@@ -180,8 +182,10 @@ function ThemeMenu() {
         <Listbox.Option
           value='dark'
           className={({ selected, active }) =>
-            `flex items-center gap-2 p-2 ${active && 'bg-slate-100'} ${
-              selected ? 'text-indigo-600' : 'text-gray-600'
+            `flex items-center gap-2 p-2 ${
+              active && 'bg-slate-100 dark:bg-white/5'
+            } ${
+              selected ? 'text-indigo-600 dark:text-sky-500' : 'text-gray-600'
             }`
           }
         >
@@ -192,8 +196,10 @@ function ThemeMenu() {
         <Listbox.Option
           value='system'
           className={({ selected, active }) =>
-            `flex items-center gap-2 p-2 ${active && 'bg-slate-100'} ${
-              selected ? 'text-indigo-600' : 'text-gray-600'
+            `flex items-center gap-2 p-2 ${
+              active && 'bg-slate-100 dark:bg-white/5'
+            } ${
+              selected ? 'text-indigo-600 dark:text-sky-500' : 'text-gray-600'
             }`
           }
         >
