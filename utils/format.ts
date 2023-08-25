@@ -7,12 +7,12 @@ type DateMetric = {
   updatedAt: Date
 }
 
-const numberFormatter = new Intl.NumberFormat(undefined, {
+const numberFormatter = new Intl.NumberFormat('en-IN', {
   minimumFractionDigits: 0,
   maximumFractionDigits: 1,
 })
 
-const dateFormatter = new Intl.DateTimeFormat(undefined, {
+const dateFormatter = new Intl.DateTimeFormat('en-IN', {
   dateStyle: 'medium',
 })
 
@@ -20,6 +20,7 @@ export function formatThousand(number: number) {
   const result = number / 1000
   return numberFormatter.format(result)
 }
+
 export function formatMillion(number: number) {
   const result = number / MILLION
   return numberFormatter.format(result)
