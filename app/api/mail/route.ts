@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export async function Get() {
+export async function GET() {
   //   await prisma.subscriber.findMany()
 
   //TODO: fetch users from code traverse
