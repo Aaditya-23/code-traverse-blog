@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run contentlayer:build && next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,ts,tsx,mdx,css}\"",
     "studio": "npx prisma studio",
-    "contentlayer:dev": "npx contentlayer dev",
-    "contentlayer:build": "npx contentlayer build",
+    "contentlayer:dev": "rm -rf .contentlayer && npx contentlayer dev",
+    "contentlayer:build": "rm -rf .contentlayer && npx contentlayer build && node scripts/syncContentToDb.mjs",
     "db:push": "npx prisma db push",
     "db:generate": "npx prisma generate"
   },
